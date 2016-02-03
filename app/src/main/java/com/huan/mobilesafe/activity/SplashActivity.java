@@ -89,27 +89,6 @@ public class SplashActivity extends AppCompatActivity {
         }
     };
 
-    //关联下载Apk子线程 (给UI主线程实时反馈下载进度)
-//    private Handler mHandlerDownload = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            switch (msg.what) {
-//                case CODE_DOWNLOADING:
-//                    //计算下载量的百分比，显示进度
-//                    int progress = (msg.arg1 * 100) / msg.arg2;
-//                    tvDownloadProgress.setText("下载进度: " + progress + " %");
-//                    break;
-//
-//                case CODE_DOWNLOAD_FINISH:
-//                    tvDownloadProgress.setText("下载完成");
-//                    break;
-//
-//                default:
-//                    break;
-//            }
-//        }
-//    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
