@@ -3,6 +3,7 @@ package com.huan.mobilesafe.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +43,9 @@ public class SplashActivity extends AppCompatActivity {
 
     private TextView tvVersion;
     private TextView tvDownloadProgress;
+
+    //用户偏好
+    private SharedPreferences msharedPreferences;
 
     //从服务器上获取的信息
     //版本名v
@@ -100,8 +103,19 @@ public class SplashActivity extends AppCompatActivity {
         //设置版本名
         tvVersion.setText("当前版本:" + getVersionName());
 
-        //检查版本
-        checkVersion();
+        //检索配置文件configuration
+        msharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
+        //获取用户偏好数据
+        boolean autoUpdateStatus = msharedPreferences.getBoolean("auto_update_status", true);
+
+        //根据用户偏好数据设置，判断是否需要更新
+        if (autoUpdateStatus) {
+            //检查版本
+            checkVersion();
+        } else {
+            //延时2s，进入主界面
+            mHandlerSplash.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2 * 1000);
+        }
     }
 
     /**
@@ -180,7 +194,7 @@ public class SplashActivity extends AppCompatActivity {
                 HttpURLConnection conn = null;
                 try {
                     //填写本机地址
-                    URL url = new URL("http://192.168.1.102:8080/update.json");
+                    URL url = new URL("http://192.168.1.100:8080/update.json");
                     conn = (HttpURLConnection) url.openConnection();
                     //设置请求方法
                     conn.setRequestMethod("GET");
@@ -276,6 +290,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //跳转到主页面
+                enterHome();
+            }
+        });
+
+        //监听物理返回键 (直接进入主页面)
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
                 enterHome();
             }
         });

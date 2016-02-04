@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
+        style="@style/TitleStyle"
+        android:text="@string/function_list" />
+
+    <com.huan.mobilesafe.view.FocusedTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="我是主页面"/>
-</RelativeLayout>
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="@string/function_introduce"
+        android:textColor="#1509f4"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"></GridView>
+</LinearLayout>
