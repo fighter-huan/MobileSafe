@@ -12,10 +12,42 @@
     <style name="TitleStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">55dp</item>
-        <item name="android:background">#ff4400</item>
+        <item name="android:background">@color/title_color</item>
         <item name="android:textColor">#fff</item>
         <item name="android:textSize">22sp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <!-- 设置防盗向导-->]
+    <style name="GuardWizardContentStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 所有按钮的样式-->
+    <style name="AllButton">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- 设置防盗向导页面的下一步按钮-->
+    <style name="AllButton.ButtonNext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@drawable/button_character</item>
+        <item name="android:text">下一步</item>
+        <item name="android:onClick">btnOnClick</item>
+    </style>
+
+
+
 
 </resources>

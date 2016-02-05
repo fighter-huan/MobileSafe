@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.SettingActivity"></activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.GuardActivity" />
+        <activity android:name=".activity.Wizard1Activity"></activity>
     </application>
 
 </manifest>

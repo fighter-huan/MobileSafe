@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * 闪屏页面
+ */
 public class SplashActivity extends AppCompatActivity {
 
     private static final String TAG = "SplashActivityInfo";
@@ -43,6 +48,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private TextView tvVersion;
     private TextView tvDownloadProgress;
+    private RelativeLayout splashPage;
 
     //用户偏好
     private SharedPreferences msharedPreferences;
@@ -68,17 +74,20 @@ public class SplashActivity extends AppCompatActivity {
                     break;
 
                 case CODE_URL_ERROR:
-                    Toast.makeText(SplashActivity.this, "地址错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashActivity.this, "地址错误",
+                            Toast.LENGTH_SHORT).show();
                     enterHome();
                     break;
 
                 case CODE_NET_ERROR:
-                    Toast.makeText(SplashActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashActivity.this, "网络错误",
+                            Toast.LENGTH_SHORT).show();
                     enterHome();
                     break;
 
                 case CODE_JSON_ERROR:
-                    Toast.makeText(SplashActivity.this, "数据解析错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashActivity.this, "数据解析错误",
+                            Toast.LENGTH_SHORT).show();
                     enterHome();
                     break;
 
@@ -99,6 +108,7 @@ public class SplashActivity extends AppCompatActivity {
 
         tvVersion = (TextView) findViewById(R.id.tv_version);
         tvDownloadProgress = (TextView) findViewById(R.id.tv_download_progress);
+        splashPage = (RelativeLayout) findViewById(R.id.splash_page);
 
         //设置版本名
         tvVersion.setText("当前版本:" + getVersionName());
@@ -116,6 +126,11 @@ public class SplashActivity extends AppCompatActivity {
             //延时2s，进入主界面
             mHandlerSplash.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2 * 1000);
         }
+
+        //渐变的动画效果
+        AlphaAnimation anim = new AlphaAnimation(0.3f, 1f);
+        anim.setDuration(2 * 1000);
+        splashPage.startAnimation(anim);
     }
 
     /**

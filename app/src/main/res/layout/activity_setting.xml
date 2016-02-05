@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.huan.mobilesafe"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ResAuto">
 
     <TextView
         style="@style/TitleStyle"
         android:text="@string/setting_center" />
 
     <com.huan.mobilesafe.view.SettingItemView
-        android:id="@+id/setting_item_view"
+        android:id="@+id/setting_item_update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        custom:description_off="自动更新设置已关闭"
+        custom:description_on="自动更新设置已开启"
+        custom:title_item="自动更新设置" />
 
     <View
         android:layout_width="match_parent"
