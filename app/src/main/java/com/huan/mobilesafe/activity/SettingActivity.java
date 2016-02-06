@@ -20,7 +20,7 @@ public class SettingActivity extends AppCompatActivity {
     private SettingItemView settingItemView;
 
     //用户偏好数据
-    private SharedPreferences msharedPreferences;
+    private SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class SettingActivity extends AppCompatActivity {
         settingItemView = (SettingItemView) findViewById(R.id.setting_item_update);
 
         //实例化SharedPreferences
-        msharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
 
         //获取配置文件configuration中的信息 (默认值为true，即用户选择之前)
-        boolean autoUpdateStatus = msharedPreferences.getBoolean("auto_update_status", true);
+        boolean autoUpdateStatus = mSharedPreferences.getBoolean("auto_update_status", true);
 
         //进入此活动就加载自定义控件，因为标题是固定的所以在初始化时就指定了值
         //根据自动更新设置，加载控件
@@ -49,7 +49,7 @@ public class SettingActivity extends AppCompatActivity {
                         settingItemView.setChecked(isChecked);
 
                         //保存设置
-                        SharedPreferences.Editor editor = msharedPreferences.edit();
+                        SharedPreferences.Editor editor = mSharedPreferences.edit();
                         editor.putBoolean("auto_update_status", isChecked);
                         editor.commit();
                     }
