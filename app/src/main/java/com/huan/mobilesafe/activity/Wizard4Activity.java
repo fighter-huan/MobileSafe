@@ -1,10 +1,9 @@
 package com.huan.mobilesafe.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.huan.mobilesafe.R;
 
@@ -13,14 +12,37 @@ import com.huan.mobilesafe.R;
  */
 public class Wizard4Activity extends WizardBaseActivity {
 
-    private SharedPreferences mSharedPreferences;
+    private CheckBox cbProtectStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wizard4);
 
-        mSharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
+        cbProtectStatus = (CheckBox) findViewById(R.id.cb_protect_status);
+
+        //判断防盗保护状态
+        boolean protect_status = mSharedPreferences.getBoolean("protect_status", false);
+        if (protect_status) {
+            cbProtectStatus.setChecked(true);
+            cbProtectStatus.setText("防盗保护已经开启");
+        } else {
+            cbProtectStatus.setChecked(false);
+            cbProtectStatus.setText("防盗保护没有开启");
+        }
+
+        cbProtectStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cbProtectStatus.setText("防盗保护已经开启");
+                    mSharedPreferences.edit().putBoolean("protect_status", true).commit();
+                } else {
+                    cbProtectStatus.setText("防盗保护没有开启");
+                    mSharedPreferences.edit().putBoolean("protect_status", false).commit();
+                }
+            }
+        });
     }
 
     @Override

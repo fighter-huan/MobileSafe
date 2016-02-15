@@ -13,6 +13,7 @@
         android:text="SIM卡变更后报警短信会发送给安全号码"/>
 
     <EditText
+        android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入或选择安全号码"
@@ -22,6 +23,7 @@
         android:singleLine="true"/>
 
     <Button
+        android:onClick="selectContacts"
         style="@style/AllButton"
         android:layout_width="match_parent"
         android:layout_margin="10dp"

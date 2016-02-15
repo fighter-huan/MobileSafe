@@ -68,6 +68,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 1:
+                        //通讯卫士
+                        startActivity(new Intent(HomeActivity.this, CallSafeActivity.class));
                         break;
 
                     case 2:
@@ -86,6 +88,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 7:
+                        //高级工具
+                        startActivity(new Intent(HomeActivity.this, AdvancedToolsActivity.class));
                         break;
 
                     case 8:

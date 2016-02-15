@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleStyle"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="40dp"
+            android:text="黑名单管理" />
+
+        <Button
+            style="@style/AllButton"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="addBlackPhone"
+            android:text="添加"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/black_list_view"
+        layout="@layout/black_list_view"></include>
+
+</LinearLayout>

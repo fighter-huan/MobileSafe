@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
@@ -23,6 +24,7 @@ import com.huan.mobilesafe.utils.StreamUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,6 +114,9 @@ public class SplashActivity extends AppCompatActivity {
 
         //设置版本名
         tvVersion.setText("当前版本:" + getVersionName());
+
+        //拷贝归属地查询数据库
+        copyDB("address.db");
 
         //检索配置文件configuration
         msharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
@@ -425,5 +430,42 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(intent);
         //销毁SplashActivity
         finish();
+    }
+
+    /**
+     * 拷贝归属地查询数据库
+     */
+    private void copyDB(String dbName) {
+        //指定数据库目标路径
+        File destinationFile = new File(getFilesDir(), dbName);
+
+        //如果数据库已存在，则不再拷贝 (直接结束此方法)
+        if (destinationFile.exists()) {
+            Log.i(TAG, "数据库" + dbName + "已经存在");
+            return;
+        }
+
+        InputStream inputStream = null;
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(destinationFile);
+            inputStream = getAssets().open("address.db");
+            int len = 0;
+            byte[] buffer = new byte[1024];
+            while ((len = inputStream.read(buffer)) != -1) {
+                fileOutputStream.write(buffer, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

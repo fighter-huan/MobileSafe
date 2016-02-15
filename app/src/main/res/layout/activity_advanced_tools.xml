@@ -6,11 +6,14 @@
 
     <TextView
         style="@style/TitleStyle"
-        android:text="手机防盗" />
+        android:text="高级工具"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/guard_selector"
+        android:clickable="true"
+        android:onClick="getPhoneArea"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -18,49 +21,11 @@
 
         <TextView
             style="@style/GuardWizardContentStyle234"
+            android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
-            android:text="安全号码" />
-
-        <TextView
-            android:id="@+id/tv_safe_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#a000" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp">
-
-        <TextView
-            style="@style/GuardWizardContentStyle234"
-            android:layout_marginBottom="10dp"
-            android:text="防盗保护是否开启" />
-
-        <ImageView
-            android:id="@+id/iv_protect_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/unlock" />
+            android:drawableLeft="@android:drawable/star_off"
+            android:drawablePadding="5dp"
+            android:text="电话归属地查询" />
 
     </RelativeLayout>
 
@@ -76,7 +41,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/guard_selector"
         android:clickable="true"
-        android:onClick="reEnterWizard"
+        android:onClick="queryCommonPhone"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -86,7 +51,9 @@
             style="@style/GuardWizardContentStyle234"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
-            android:text="重新进入设置向导" />
+            android:drawableLeft="@android:drawable/star_off"
+            android:drawablePadding="5dp"
+            android:text="常用号码查询" />
 
     </RelativeLayout>
 
@@ -97,39 +64,59 @@
         android:layout_marginRight="8dp"
         android:background="#a000" />
 
-    <TextView
-        style="@style/GuardWizardContentStyle234"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        android:background="#9b9293"
-        android:padding="10dp"
-        android:text="功能简介" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/guard_selector"
+        android:clickable="true"
+        android:onClick="backupSM"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
 
-    <TextView
-        style="@style/GuardWizardContentStyle1"
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:drawablePadding="5dp"
-        android:text="GPS追踪：#*location*#" />
+        <TextView
+            style="@style/GuardWizardContentStyle234"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@android:drawable/star_off"
+            android:drawablePadding="5dp"
+            android:text="短信备份" />
 
-    <TextView
-        style="@style/GuardWizardContentStyle1"
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:drawablePadding="5dp"
-        android:text="播放报警音乐：#*alarm*#" />
+    </RelativeLayout>
 
-    <TextView
-        style="@style/GuardWizardContentStyle1"
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:drawablePadding="5dp"
-        android:text="远程删除数据：#*wipedata*#" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#a000" />
 
-    <TextView
-        style="@style/GuardWizardContentStyle1"
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:drawablePadding="5dp"
-        android:text="远程锁屏：#*lockscreen*#" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/guard_selector"
+        android:clickable="true"
+        android:onClick="programLock"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
 
+        <TextView
+            style="@style/GuardWizardContentStyle234"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@android:drawable/star_off"
+            android:drawablePadding="5dp"
+            android:text="程序锁" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#a000" />
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.huan.mobilesafe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -19,11 +20,15 @@ import com.huan.mobilesafe.R;
  */
 public abstract class WizardBaseActivity extends Activity {
 
+    protected SharedPreferences mSharedPreferences;
+
     protected GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mSharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
 
         //监听手势滑动事件
         mGestureDetector = new GestureDetector(this,

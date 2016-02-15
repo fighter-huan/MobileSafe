@@ -11,6 +11,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.huan.mobilesafe.R;
 import com.huan.mobilesafe.view.SettingItemView;
@@ -22,8 +23,6 @@ public class Wizard2Activity extends WizardBaseActivity {
 
     private static final String TAG = "Wizard2ActivityInfo";
 
-    private SharedPreferences mSharedPreferences;
-
     private SettingItemView settingItemView;
 
     @Override
@@ -32,9 +31,6 @@ public class Wizard2Activity extends WizardBaseActivity {
         setContentView(R.layout.activity_wizard2);
 
         settingItemView = (SettingItemView) findViewById(R.id.sim_bind_status);
-
-        //获取用户偏好配置文件
-        mSharedPreferences = getSharedPreferences("configuration", MODE_PRIVATE);
 
         //判断用户是否绑定SIM卡
         String simSerialNumber = mSharedPreferences.getString("simSerialNumber", null);
@@ -51,7 +47,7 @@ public class Wizard2Activity extends WizardBaseActivity {
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        //更改显示neirong
+                        //更改显示内容
                         settingItemView.setChecked(isChecked);
 
                         if (isChecked) {
@@ -81,6 +77,13 @@ public class Wizard2Activity extends WizardBaseActivity {
 
     @Override
     protected void showNextPage() {
+        //如果SIM卡没有绑定，就不允许进入下一页
+        //判断用户是否绑定SIM卡
+        String simSerialNumber = mSharedPreferences.getString("simSerialNumber", null);
+        if (simSerialNumber == null) {
+            Toast.makeText(this, "请绑定SIM卡", Toast.LENGTH_SHORT).show();
+            return;
+        }
         finish();
         startActivity(new Intent(this, Wizard3Activity.class));
         overridePendingTransition(R.anim.tran_in, R.anim.tran_out);

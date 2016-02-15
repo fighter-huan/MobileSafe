@@ -26,4 +26,34 @@
         android:layout_marginRight="8dp"
         android:background="#a000" />
 
+    <com.huan.mobilesafe.view.SettingItemView
+        android:id="@+id/setting_item_show_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:description_off="归属地显示已关闭"
+        custom:description_on="归属地显示已开启"
+        custom:title_item="电话归属地显示设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#a000" />
+
+    <com.huan.mobilesafe.view.SettingItemView
+        android:id="@+id/Setting_item_black_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:description_off="骚扰拦截已关闭"
+        custom:description_on="骚扰拦截已开启"
+        custom:title_item="骚扰拦截设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#a000" />
+
 </LinearLayout>
