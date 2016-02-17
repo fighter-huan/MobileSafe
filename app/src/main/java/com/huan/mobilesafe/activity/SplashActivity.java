@@ -214,7 +214,7 @@ public class SplashActivity extends AppCompatActivity {
                 HttpURLConnection conn = null;
                 try {
                     //填写本机地址
-                    URL url = new URL("http://192.168.1.100:8080/update.json");
+                    URL url = new URL("http://192.168.1.105:8080/update.json");
                     conn = (HttpURLConnection) url.openConnection();
                     //设置请求方法
                     conn.setRequestMethod("GET");
@@ -384,7 +384,7 @@ public class SplashActivity extends AppCompatActivity {
                         //读取数据，并写入SD卡
                         while ((len = inputStream.read(buffer)) != -1) {
                             //获取消息
-                            Message msg = new Message();
+                            Message msg = Message.obtain();
 
                             fileOutputStream.write(buffer, 0, len);
                             //下载累加
@@ -441,7 +441,6 @@ public class SplashActivity extends AppCompatActivity {
 
         //如果数据库已存在，则不再拷贝 (直接结束此方法)
         if (destinationFile.exists()) {
-            Log.i(TAG, "数据库" + dbName + "已经存在");
             return;
         }
 

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -54,6 +55,10 @@ public class CallSafeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        BlackListDb blackListDb = new BlackListDb(this);
+        String mode = blackListDb.findPhone("18395403366");
+        Log.i(TAG, "mode = " + mode);
     }
 
     /**

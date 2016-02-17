@@ -3,8 +3,8 @@ package com.huan.mobilesafe.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +73,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 2:
+                        //软件管理
+                        startActivity(new Intent(HomeActivity.this, AppManagerActivity.class));
                         break;
 
                     case 3:
