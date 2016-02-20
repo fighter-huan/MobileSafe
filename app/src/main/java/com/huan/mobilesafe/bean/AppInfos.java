@@ -3,7 +3,7 @@ package com.huan.mobilesafe.bean;
 import android.graphics.drawable.Drawable;
 
 /**
- * AppInfos
+ * AppInfos 应用程序信息类
  *
  * @author: 欢
  * @time: 2016/2/15 18:20

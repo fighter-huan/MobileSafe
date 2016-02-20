@@ -7,16 +7,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
 import com.huan.mobilesafe.activity.CallSafeActivity;
-import com.huan.mobilesafe.db.BlackListDb;
+import com.huan.mobilesafe.dao.BlackListDAO;
 
 public class CallSafeService extends Service {
 
     private static final String TAG = "CallSafeServiceInfo";
 
-    private BlackListDb blackListDb;
+    private BlackListDAO blackListDb;
 
     public CallSafeService() {
     }
@@ -37,7 +36,7 @@ public class CallSafeService extends Service {
         registerReceiver(sMeceiver, intentFilter);
 
         //初始化黑名单数据库
-        blackListDb = new BlackListDb(this);
+        blackListDb = new BlackListDAO(this);
     }
 
     private class SMeceiver extends BroadcastReceiver {

@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.huan.mobilesafe.R;
 
 /**
- * 第二个设置向导页面
+ * 第三个设置向导页面
  */
 public class Wizard3Activity extends WizardBaseActivity {
 

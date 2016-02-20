@@ -1,15 +1,15 @@
-package com.huan.mobilesafe.db;
+package com.huan.mobilesafe.dao;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * AddressDb
+ * AddressDAO 归属地数据库类
  *
  * @author: 欢
  * @time: 2016/2/11 23:07
  */
-public class AddressDb {
+public class AddressDAO {
 
     //将数据库拷贝到此路径下
     private static final String PATH = "data/data/com.huan.mobilesafe/files/address.db";

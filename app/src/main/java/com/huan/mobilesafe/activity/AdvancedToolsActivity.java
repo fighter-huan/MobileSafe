@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.huan.mobilesafe.R;
 
+/**
+ * 高级工具页面
+ */
 public class AdvancedToolsActivity extends AppCompatActivity {
 
     @Override
@@ -28,7 +32,7 @@ public class AdvancedToolsActivity extends AppCompatActivity {
      * @param view
      */
     public void queryCommonPhone(View view) {
-
+        Toast.makeText(this, "此功能未实现", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -36,14 +40,15 @@ public class AdvancedToolsActivity extends AppCompatActivity {
      * @param view
      */
     public void backupSM(View view) {
-
+        Toast.makeText(this, "此功能未实现", Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 程序锁
      * @param view
      */
-    public void programLock(View view) {
-
+    public void appLock(View view) {
+        //跳转到加锁列表界面
+        startActivity(new Intent(this, AppLockActivity.class));
     }
 }

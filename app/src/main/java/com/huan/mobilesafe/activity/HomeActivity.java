@@ -78,15 +78,22 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case 3:
+                        //进程管理
+                        startActivity(new Intent(HomeActivity.this, TaskManagerActivity.class));
                         break;
 
                     case 4:
+                        //流量统计
+                        Toast.makeText(HomeActivity.this, "此功能未实现", Toast.LENGTH_SHORT).show();
                         break;
 
                     case 5:
+                        //手机杀毒
                         break;
 
                     case 6:
+                        //缓存清理
+                        Toast.makeText(HomeActivity.this, "此功能未实现", Toast.LENGTH_SHORT).show();
                         break;
 
                     case 7:

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.huan.mobilesafe.db.AddressDb;
+import com.huan.mobilesafe.dao.AddressDAO;
 
 public class OutCallReceiver extends BroadcastReceiver {
     public OutCallReceiver() {
@@ -18,7 +18,7 @@ public class OutCallReceiver extends BroadcastReceiver {
         String number = getResultData();
 
         //获取归属地
-        String address = AddressDb.getAddress(number);
+        String address = AddressDAO.getAddress(number);
 
         Toast.makeText(context, address, Toast.LENGTH_LONG).show();
     }

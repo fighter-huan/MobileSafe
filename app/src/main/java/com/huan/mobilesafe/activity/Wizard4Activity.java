@@ -8,7 +8,7 @@ import android.widget.CompoundButton;
 import com.huan.mobilesafe.R;
 
 /**
- * 第二个设置向导页面
+ * 第四个设置向导页面
  */
 public class Wizard4Activity extends WizardBaseActivity {
 

@@ -1,4 +1,4 @@
-package com.huan.mobilesafe.db;
+package com.huan.mobilesafe.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,21 +6,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.huan.mobilesafe.bean.BlackListInfo;
+import com.huan.mobilesafe.db.BlackListOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BlackListDb
+ * BlackListDAO 黑名单数据库类
  *
  * @author: 欢
  * @time: 2016/2/14 9:32
  */
-public class BlackListDb {
+public class BlackListDAO {
 
     private BlackListOpenHelper helper;
 
-    public BlackListDb(Context context) {
+    public BlackListDAO(Context context) {
         helper = new BlackListOpenHelper(context);
     }
 

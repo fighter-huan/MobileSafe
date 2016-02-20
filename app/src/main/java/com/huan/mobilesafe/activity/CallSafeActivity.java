@@ -20,10 +20,13 @@ import android.widget.Toast;
 
 import com.huan.mobilesafe.R;
 import com.huan.mobilesafe.bean.BlackListInfo;
-import com.huan.mobilesafe.db.BlackListDb;
+import com.huan.mobilesafe.dao.BlackListDAO;
 
 import java.util.List;
 
+/**
+ * 通讯卫士页面
+ */
 public class CallSafeActivity extends AppCompatActivity {
 
     private static final String TAG = "CallSafeActivityInfo";
@@ -56,9 +59,7 @@ public class CallSafeActivity extends AppCompatActivity {
             }
         });
 
-        BlackListDb blackListDb = new BlackListDb(this);
-        String mode = blackListDb.findPhone("18395403366");
-        Log.i(TAG, "mode = " + mode);
+        BlackListDAO blackListDb = new BlackListDAO(this);
     }
 
     /**
@@ -91,7 +92,7 @@ public class CallSafeActivity extends AppCompatActivity {
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                BlackListDb blackListDb = new BlackListDb(CallSafeActivity.this);
+                BlackListDAO blackListDb = new BlackListDAO(CallSafeActivity.this);
                 blackListDb.changeMode(phone, mode[0]);
                 //刷新界面
                 initData();
@@ -181,7 +182,7 @@ public class CallSafeActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //从数据库中删除数据
-                BlackListDb blackListDb = new BlackListDb(CallSafeActivity.this);
+                BlackListDAO blackListDb = new BlackListDAO(CallSafeActivity.this);
                 blackListDb.delete(phone);
                 //刷新界面
                 initData();
@@ -206,7 +207,7 @@ public class CallSafeActivity extends AppCompatActivity {
      */
     private void initData() {
         //查找黑名单数据库所有数据, 并添加到集合中
-        BlackListDb blackListDb = new BlackListDb(this);
+        BlackListDAO blackListDb = new BlackListDAO(this);
         listInfos = blackListDb.findAll();
 
         CallSafeAdapter callSafeAdapter = new CallSafeAdapter();
@@ -272,7 +273,7 @@ public class CallSafeActivity extends AppCompatActivity {
                     }
 
                     //将该电话号码和拦截模式添加到数据库
-                    BlackListDb blackListDb = new BlackListDb(CallSafeActivity.this);
+                    BlackListDAO blackListDb = new BlackListDAO(CallSafeActivity.this);
                     blackListDb.add(phoneIntercept, mode);
 
                     //刷新界面

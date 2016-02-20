@@ -1,14 +1,11 @@
 package com.huan.mobilesafe.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.huan.mobilesafe.R;
 
 /**
  * WizardBaseActivity 手机防盗设置引导页面的都需要继承此抽象类

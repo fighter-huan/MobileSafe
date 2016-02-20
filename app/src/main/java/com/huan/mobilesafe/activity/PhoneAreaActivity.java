@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.huan.mobilesafe.R;
-import com.huan.mobilesafe.db.AddressDb;
+import com.huan.mobilesafe.dao.AddressDAO;
 
+/**
+ * 归属地查询页面
+ */
 public class PhoneAreaActivity extends AppCompatActivity {
 
     private EditText etPhoneQuery;
@@ -36,7 +39,7 @@ public class PhoneAreaActivity extends AppCompatActivity {
             //变化时回调
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String result = AddressDb.getAddress(s.toString());
+                String result = AddressDAO.getAddress(s.toString());
                 //显示查询结果
                 tvResultQuery.setText("查询结果：" + result);
             }
@@ -58,7 +61,7 @@ public class PhoneAreaActivity extends AppCompatActivity {
         //获取号码
         String phoneNumber = etPhoneQuery.getText().toString().trim();
         if (!TextUtils.isEmpty(phoneNumber)) {
-            String result = AddressDb.getAddress(phoneNumber);
+            String result = AddressDAO.getAddress(phoneNumber);
             //显示查询结果
             tvResultQuery.setText("查询结果：" + result);
         }

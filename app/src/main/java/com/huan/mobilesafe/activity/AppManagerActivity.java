@@ -24,6 +24,9 @@ import com.huan.mobilesafe.logic.AppManager;
 
 import java.util.List;
 
+/**
+ * 软件管理页面
+ */
 public class AppManagerActivity extends AppCompatActivity {
 
     private static final String TAG = "AppManagerActivityInfo";

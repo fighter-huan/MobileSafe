@@ -8,7 +8,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
-import com.huan.mobilesafe.db.AddressDb;
+import com.huan.mobilesafe.dao.AddressDAO;
 import com.huan.mobilesafe.receiver.OutCallReceiver;
 
 /**
@@ -54,7 +54,7 @@ public class AddressService extends Service {
             switch (state) {
                 case TelephonyManager.CALL_STATE_RINGING:
                     //根据来电号码查询归属地
-                    String address = AddressDb.getAddress(incomingNumber);
+                    String address = AddressDAO.getAddress(incomingNumber);
                     Toast.makeText(AddressService.this, address, Toast.LENGTH_LONG).show();
                     break;
                 default:
