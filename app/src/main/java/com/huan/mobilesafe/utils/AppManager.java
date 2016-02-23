@@ -1,4 +1,4 @@
-package com.huan.mobilesafe.logic;
+package com.huan.mobilesafe.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -6,7 +6,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.text.format.Formatter;
-import android.util.Log;
 
 import com.huan.mobilesafe.bean.AppInfos;
 

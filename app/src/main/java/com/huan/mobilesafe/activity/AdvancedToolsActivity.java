@@ -21,6 +21,7 @@ public class AdvancedToolsActivity extends AppCompatActivity {
 
     /**
      * 电话归属地查询
+     *
      * @param view
      */
     public void getPhoneArea(View view) {
@@ -29,6 +30,7 @@ public class AdvancedToolsActivity extends AppCompatActivity {
 
     /**
      * 常用号码查询
+     *
      * @param view
      */
     public void queryCommonPhone(View view) {
@@ -37,6 +39,7 @@ public class AdvancedToolsActivity extends AppCompatActivity {
 
     /**
      * 短信备份
+     *
      * @param view
      */
     public void backupSM(View view) {
@@ -45,10 +48,11 @@ public class AdvancedToolsActivity extends AppCompatActivity {
 
     /**
      * 程序锁
+     *
      * @param view
      */
     public void appLock(View view) {
-        //跳转到加锁列表界面
-        startActivity(new Intent(this, AppLockActivity.class));
+        //跳转到输入密码的界面
+        startActivity(new Intent(this, PasswordInputActivity.class));
     }
 }

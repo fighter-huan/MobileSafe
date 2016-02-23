@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.huan.mobilesafe.db.AppLockOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * AppLockDAO
  *
@@ -77,5 +80,29 @@ public class AppLockDAO {
         database.close();
 
         return result;
+    }
+
+    /**
+     * 查询数据库中所有包名
+     *
+     * @return allLockedApp
+     */
+    public List<String> findAll() {
+        List<String> allLockedApp = new ArrayList<>();
+
+        SQLiteDatabase database = helper.getReadableDatabase();
+
+        //查询pack_name键的所有行
+        Cursor cursor = database.query("app_locked", new String[]{"package_name"},
+                null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            allLockedApp.add(cursor.getString(0));
+        }
+
+        cursor.close();
+        database.close();
+
+        return allLockedApp;
     }
 }

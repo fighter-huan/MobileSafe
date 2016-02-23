@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.huan.mobilesafe.R;
 import com.huan.mobilesafe.bean.AppInfos;
-import com.huan.mobilesafe.logic.AppManager;
+import com.huan.mobilesafe.utils.AppManager;
 
 import java.util.List;
 
@@ -35,6 +35,7 @@ public class AppManagerActivity extends AppCompatActivity {
     private TextView tvSd;
     private ListView lvAppList;
     private List<AppInfos> appInfos;
+    private AppManagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,14 @@ public class AppManagerActivity extends AppCompatActivity {
                 startActivity(launchIntentForPackage);
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //刷新界面
+        initUI();
+        initData();
     }
 
     //初始化适配器
@@ -84,7 +93,7 @@ public class AppManagerActivity extends AppCompatActivity {
             Button btnUninstall = (Button) view.findViewById(R.id.btn_uninstall);
 
             //获取appInfos集合中的每一项
-            AppInfos appInfo = appInfos.get(position);
+            final AppInfos appInfo = appInfos.get(position);
             //获取图标
             Drawable icon = appInfo.getIcon();
             //获取名称
@@ -114,13 +123,8 @@ public class AppManagerActivity extends AppCompatActivity {
                     Uri packageUri = Uri.parse("package:" + packageName);
                     Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
                     startActivity(uninstallIntent);
-
-                    //刷新界面
-                    initUI();
-                    initData();
                 }
             });
-
 
             return view;
         }
@@ -131,7 +135,7 @@ public class AppManagerActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             //创建适配器并加载
-            AppManagerAdapter adapter = new AppManagerAdapter();
+            adapter = new AppManagerAdapter();
             lvAppList.setAdapter(adapter);
         }
     };

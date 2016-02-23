@@ -1,5 +1,6 @@
 package com.huan.mobilesafe.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.huan.mobilesafe.R;
 import com.huan.mobilesafe.fragment.LockFragment;
 import com.huan.mobilesafe.fragment.UnlockFragment;
+import com.huan.mobilesafe.service.TaskService;
 
 /**
  * 程序锁页面

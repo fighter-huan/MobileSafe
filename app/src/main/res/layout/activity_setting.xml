@@ -56,4 +56,19 @@
         android:layout_marginRight="8dp"
         android:background="#a000" />
 
+    <com.huan.mobilesafe.view.SettingItemView
+        android:id="@+id/Setting_item_app_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:description_off="程序锁已关闭"
+        custom:description_on="程序锁已开启"
+        custom:title_item="程序锁设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#a000" />
+
 </LinearLayout>
