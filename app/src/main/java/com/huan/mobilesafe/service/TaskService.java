@@ -132,7 +132,7 @@ public class TaskService extends Service {
                     Log.i(TAG, "topPackageName = " + topPackageName);
 
                     //回到桌面后开启保护
-                    if (topPackageName.equals("com.bbk.launcher2")) {
+                    if (topPackageName.equals("com.android.launcher")) {
                         //开启线程
                         new ThreadDeal().start();
                     }

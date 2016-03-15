@@ -160,8 +160,7 @@ public class LockedPasswordInputActivity extends AppCompatActivity implements Vi
                 break;
 
             case R.id.iv_revert:
-                //返回 (销毁当前活动)
-//                finish();
+                //返回桌面
                 Intent intent = new Intent();
                 intent.setAction("android.intent.action.MAIN");
                 intent.addCategory("android.intent.category.HOME");

@@ -1,13 +1,11 @@
 package com.huan.mobilesafe.receiver;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.widget.Toast;
 
 /**

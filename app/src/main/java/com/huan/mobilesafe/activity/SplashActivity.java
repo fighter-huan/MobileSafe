@@ -214,20 +214,22 @@ public class SplashActivity extends AppCompatActivity {
                 HttpURLConnection conn = null;
                 try {
                     //填写本机地址
-                    URL url = new URL("http://192.168.1.105:8080/update.json");
+                    URL url = new URL("http://10.130.25.23:8080/update.json");
+
                     conn = (HttpURLConnection) url.openConnection();
                     //设置请求方法
                     conn.setRequestMethod("GET");
                     //设置连接超时(5s)
-                    conn.setConnectTimeout(5 * 1000);
+                    conn.setConnectTimeout(10 * 1000);
                     //设置响应超时(5s)，响应超时是指：已连接上服务器，但服务器迟迟不给响应
-                    conn.setReadTimeout(5 * 1000);
+                    conn.setReadTimeout(10 * 1000);
 
                     //连接服务器
                     conn.connect();
 
                     //获取响应码
                     int responseCode = conn.getResponseCode();
+
                     if (responseCode == 200) {
                         InputStream inputStream = conn.getInputStream();
                         String result = StreamUtils.readFromStream(inputStream);
@@ -367,7 +369,7 @@ public class SplashActivity extends AppCompatActivity {
 
                     //获取Apk文件大小 (单位:byte)
                     int fileLength = conn.getContentLength();
-                    //初始化下载前文件大小为0
+                    //初始化下载前文件大小为 0
                     int downedFileLength = 0;
 
                     //获取Apk名称
@@ -387,7 +389,7 @@ public class SplashActivity extends AppCompatActivity {
                             Message msg = Message.obtain();
 
                             fileOutputStream.write(buffer, 0, len);
-                            //下载累加
+                            //下载累加 (已下载的文件大小)
                             downedFileLength += len;
 
                             if (downedFileLength < fileLength) {

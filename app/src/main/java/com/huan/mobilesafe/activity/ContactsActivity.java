@@ -46,7 +46,6 @@ public class ContactsActivity extends AppCompatActivity {
                 //将数据放在intent中返回给上一个页面
                 intent.putExtra("phone", phone);
                 setResult(RESULT_OK, intent);
-
                 finish();
             }
         });

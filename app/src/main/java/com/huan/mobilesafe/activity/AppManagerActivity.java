@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -83,9 +84,65 @@ public class AppManagerActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = View.inflate(AppManagerActivity.this, R.layout.item_app_manager, null);
 
-            //查找控件
+            ViewHolder holder = null;
+
+            if (convertView == null) {
+                convertView = View.inflate(AppManagerActivity.this, R.layout.item_app_manager, null);
+
+                holder = new ViewHolder();
+
+                //将需要缓存的view封装到ViewHolder对象中
+                holder.ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
+                holder.tvAppName = (TextView) convertView.findViewById(R.id.tv_app_name);
+                holder.tvAppLocation = (TextView) convertView.findViewById(R.id.tv_app_location);
+                holder.tvAppSize = (TextView) convertView.findViewById(R.id.tv_app_size);
+                holder.btnUninstall = (Button) convertView.findViewById(R.id.btn_uninstall);
+
+                //将holder添加给convertView
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            //获取appInfos集合中的每一项
+            final AppInfos appInfo = appInfos.get(position);
+            //获取图标
+            Drawable icon = appInfo.getIcon();
+            //获取名称
+            final String appName = appInfo.getApkName();
+            //获取包名
+            final String packageName = appInfo.getPackageName();
+            //获取安装位置
+            boolean isRom = appInfo.isRom();
+            //获取大小
+            String appSize = appInfo.getApkSize();
+
+            //将获取到的图标，名称，安装位置，大小设置给控件
+            holder.ivIcon.setImageDrawable(icon);
+            holder.tvAppName.setText(appName);
+            holder.tvAppSize.setText(appSize);
+            if (isRom) {
+                holder.tvAppLocation.setText("手机内存");
+            } else {
+                holder.tvAppLocation.setText("SD卡");
+            }
+
+            //给btnUninstall注册点击事件
+            holder.btnUninstall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //卸载
+                    Uri packageUri = Uri.parse("package:" + packageName);
+                    Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
+                    startActivity(uninstallIntent);
+                }
+            });
+
+            return convertView;
+
+
+/*            //查找控件
             ImageView ivIcon = (ImageView) view.findViewById(R.id.iv_icon);
             TextView tvAppName = (TextView) view.findViewById(R.id.tv_app_name);
             TextView tvAppLocation = (TextView) view.findViewById(R.id.tv_app_location);
@@ -126,8 +183,16 @@ public class AppManagerActivity extends AppCompatActivity {
                 }
             });
 
-            return view;
+            return view;*/
         }
+    }
+
+    static class ViewHolder {
+        public ImageView ivIcon;
+        public TextView tvAppName;
+        public TextView tvAppSize;
+        public TextView tvAppLocation;
+        public Button btnUninstall;
     }
 
     private Handler handler = new Handler() {
